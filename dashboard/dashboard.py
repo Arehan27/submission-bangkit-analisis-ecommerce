@@ -4,24 +4,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Title of the dashboard
+# Judul
 st.title("Dashboard for Research Project")
 
-# Load your data
-df = pd.read_csv('dashboard/filled_data.csv')  # Update with your merged dataset path
+# Load data
+df = pd.read_csv('dashboard/filled_data.csv')
 
 st.write("Pertanyaan 1: Kategori produk mana yang memiliki rating tertinggi yang memiliki minimal 5% pesanan dari pesanan total")
 st.write("Pertanyaan 2: Kategori produk apa saja yang memiliki penjualan terendah")
 
-# Display data overview
 st.write("Data Overview")
-st.dataframe(df.head())  # Show the first few rows of the dataframe
+st.dataframe(df.head())  
 
 
-
-
-
-# Function to show price analysis with enhanced visualization
+# Fungsi analisis harga
 def show_price_analysis(data):
     # Determine price range
     bins = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
@@ -74,7 +70,7 @@ def show_price_analysis(data):
     plt.clf()
 
 
-# Function to show average review score per price range (bar chart)
+# Fungsi untuk skor rata rata
 def show_average_review_score(data):
     # Determine price range
     bins = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
@@ -111,11 +107,11 @@ def show_average_review_score(data):
     # Optional: Clear the current figure for future plots
     plt.clf()
 
-# Call the function to show price analysis
+# Panggil fungsi
 show_price_analysis(df)
 show_average_review_score(df)
 
-# Create a new expander for average review scores
+# Expander insight
 with st.expander("Insight"):
     # Define price ranges
     bins = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
@@ -278,8 +274,8 @@ def show_lowest_selling_products(df, num_products=10):
     plt.title('Produk dengan Penjualan Terendah (Tanpa Kategori)')
     plt.xlabel('Jumlah Penjualan')
     plt.ylabel('Kategori Produk')
-    st.pyplot(plt)  # Display the plot in Streamlit
-    plt.clf()  # Clear the current figure
+    st.pyplot(plt)  
+    plt.clf()  
 
 
 show_lowest_selling_products(df)
@@ -298,7 +294,7 @@ st.subheader("Conclution")
 
 st.write("""
 - **Kesimpulan Pertanyaan 1**  
-Dari analisis yang dilakukan, termasuk penerapan RFM, kategori produk yang menunjukkan kombinasi terbaik antara rating dan jumlah penjualan adalah "health_beauty". Kategori ini tidak hanya memiliki rating tertinggi, tetapi juga volume penjualan yang signifikan. Oleh karena itu, fokus pada pengembangan produk dan strategi pemasaran dalam kategori ini dapat memberikan keuntungan jangka panjang dan meningkatkan loyalitas pelanggan.
+Dari analisis yang dilakukan, termasuk penerapan RFM, kategori produk yang menunjukkan kombinasi terbaik antara rating dan jumlah penjualan adalah "health_beauty". Kategori ini tidak hanya memiliki rating tertinggi, tetapi juga volume penjualan yang signifikan. Oleh karena itu, fokus pada pengembangan produk dan strategi pemasaran dalam kategori ini dapat memberikan keuntungan dan meningkatkan pelanggan.
 
 - **Kesimpulan Pertanyaan 2**  
 Dari analisis di atas, dapat disimpulkan bahwa kategori produk dengan penjualan terendah yang terdefinisi adalah "security_and_services" dengan hanya 2 penjualan, sedangkan produk tanpa kategori terdefinisi memiliki beberapa produk dengan satu penjualan. Hal ini menunjukkan bahwa ada peluang untuk meningkatkan strategi pemasaran dan pengembangan produk dalam kategori yang terdefinisi, terutama "security_and_services", untuk menarik lebih banyak konsumen. Selain itu, perhatian juga perlu diberikan pada produk tanpa kategori untuk memberikan identitas yang lebih jelas dan menarik bagi pelanggan, serta dapat lebih mudah untuk dikelompokkan.
